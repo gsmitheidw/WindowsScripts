@@ -36,8 +36,12 @@ $admin_user = Get-LocalGroupMember Administrators | Select-Object Name -Last 1
         # First two are required
         New-ItemProperty -Name VHDLocations -PropertyType String -Value $vhdlocation -Path 'HKLM:\Software\FSLogix\Profiles' -Force
         New-ItemProperty -Name Enabled -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
+        # Puts username before SID to make troubleshooting easier
         New-ItemProperty -Name FlipFlopProfileDirectoryName -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
+        # If fslogix fails, log user off
         New-ItemProperty -Name PreventLoginWithFailure -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
+        # This deletes any locally stored profiles to prevent clashes
+        New-ItemProperty -Name DeleteLocalProfileWhenVHDShouldApply -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
         
         # Get out of the registry
         Set-Location $env:USERPROFILE
