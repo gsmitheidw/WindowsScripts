@@ -30,18 +30,22 @@ $admin_user = Get-LocalGroupMember Administrators | Select-Object Name -Last 1
 #endregion
 
 
-#region fslogix-config
-    Set-Location -Path 'HKLM:\Software\FSLogix\'
+#region fslogix-config-registry
+    $regpath = 'HKLM:\Software\FSLogix\Profiles'
+    Set-Location -Path $regpath
     New-Item -Name 'Profiles' -Force
-        # First two are required
-        New-ItemProperty -Name VHDLocations -PropertyType String -Value $vhdlocation -Path 'HKLM:\Software\FSLogix\Profiles' -Force
-        New-ItemProperty -Name Enabled -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
-        # Puts username before SID to make troubleshooting easier
-        New-ItemProperty -Name FlipFlopProfileDirectoryName -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
-        # If fslogix fails, log user off
-        New-ItemProperty -Name PreventLoginWithFailure -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
+        # First two are required:
+        New-ItemProperty -Name VHDLocations -PropertyType String -Value $vhdlocation -Path $regpath -Force
+        New-ItemProperty -Name Enabled -PropertyType DWORD -Value 1 -Path $regpath -Force
+        # Puts username before SID to make troubleshooting easier:
+        New-ItemProperty -Name FlipFlopProfileDirectoryName -PropertyType DWORD -Value 1 -Path $regpath -Force
+        # If fslogix fails (to create vhd specified in the VHDLocations), log the user off
+        New-ItemProperty -Name PreventLoginWithFailure -PropertyType DWORD -Value 1 -Path $regpath -Force
         # This deletes any locally stored profiles to prevent clashes
-        New-ItemProperty -Name DeleteLocalProfileWhenVHDShouldApply -PropertyType DWORD -Value 1 -Path 'HKLM:\Software\FSLogix\Profiles' -Force
+        New-ItemProperty -Name DeleteLocalProfileWhenVHDShouldApply -PropertyType DWORD -Value 1 -Path $regpath -Force
+        # Undocumented key from FSLogix to fix an issue with RSOP failing
+        # Source: https://james-rankin.com/videos/user-group-policies-not-applying-when-using-fslogix-profile-containers
+        New-ItemProperty -Name GroupPolicyState -PropertyType DWORD -Value 0 -Path $regpath -Force
         
         # Get out of the registry
         Set-Location $env:USERPROFILE
