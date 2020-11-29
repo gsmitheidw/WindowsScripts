@@ -36,7 +36,7 @@ $admin_users = Get-LocalGroupMember Administrators
     New-Item -Name 'Profiles' -Force -Path $regpath
         # First two are required:
         New-ItemProperty -Name VHDLocations -PropertyType String -Value $vhdlocation -Path $regpath\Profiles -Force
-        New-ItemProperty -Name Enabled -PropertyType DWORD -Value 1 -Path $regpath -Force
+        New-ItemProperty -Name Enabled -PropertyType DWORD -Value 1 -Path $regpath\Profiles -Force
         # Puts username before SID to make troubleshooting easier:
         New-ItemProperty -Name FlipFlopProfileDirectoryName -PropertyType DWORD -Value 1 -Path $regpath\Profiles -Force
         # If fslogix fails (to create vhd specified in the VHDLocations), log the user off
