@@ -14,6 +14,6 @@ function Test-ChocoApp($appname) {
         }
 }
 
-$appname = 'nss-client 14.0'
+$app = 'nss-client 14.0'
 
-Test-ChocoApp($appname)
+Test-ChocoApp($app)
