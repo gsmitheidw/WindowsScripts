@@ -6,7 +6,7 @@ function Test-ChocoApp($appname) {
         $chocoapp = (clist -lo | Out-String).Split([Environment]::NewLine) | Select-String $appname
         if ($chocoapp -eq $null) {
             write-host -ForegroundColor DarkYellow "$appname not installed on $env:COMPUTERNAME"
-            #cinst nss-client -s \\comphome.computing.stu.it-tallaght.ie\deploy\nupkg -y
+            #cinst nss-client -s \\\path\to\nupkg -y
         }
         else
         {
