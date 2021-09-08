@@ -8,3 +8,5 @@ A selection of useful scripts
   - Create a self signed cert in Powershell (for use in testing MSIX etc)
 * SendKeys-Example.ps1
   - Example and cheatsheet on using SendKeys .NET method in powershell to send keypresses
+* Import-ALL-GPO.ps1
+  - Scripting loop to help bulk import group policy objects when importing to a new domain or domain in a different forest. 
