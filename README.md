@@ -10,3 +10,5 @@ A selection of useful scripts
   - Example and cheatsheet on using SendKeys .NET method in powershell to send keypresses
 * [Import-ALL-GPO.md](https://github.com/gsmitheidw/WindowsScripts/blob/main/Import-ALL-GPO.md) | [Import-ALL-GPO.ps1](https://github.com/gsmitheidw/WindowsScripts/blob/main/Import-ALL-GPO.ps1)
   - Scripting loop to help bulk import group policy objects when importing to a new domain or domain in a different forest. 
+* [ssh-yubikey-windows.md](https://github.com/gsmitheidw/WindowsScripts/blob/main/ssh-yubikey-windows.md)
+  - A *HOWTO* on using Yubikey authentication for an ssh connection to a Linux hosts from a Windows client
