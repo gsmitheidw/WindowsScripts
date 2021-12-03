@@ -35,7 +35,7 @@ $YubiToken.SubString(0,12) | Set-Clipboard
 
 ### Get an API key:
 https://upgrade.yubico.com/getapikey/
-That'll give you a *<Client ID>*	and a *<Secret key>* - make a note of those two
+That'll give you a *&lt;Client ID>*	and a *&lt;Secret key>* - make a note of those two
 and in the server edit **/etc/pam.d/sshd**  and at the top fill in this line:
 
 ~~~
