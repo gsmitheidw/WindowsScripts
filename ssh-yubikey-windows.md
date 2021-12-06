@@ -74,3 +74,8 @@ ssh to the server and you'll get:
 and should get back the response:
 *User presence confirmed*
 Then be logged in sucessfully
+  
+## Android:
+I have also tested it with [Termux](https://wiki.termux.com/wiki/Main_Page) on Android both with USB On-The-Go and
+NFC but sadly does not work pick up the Yubikey on the terminal for ssh-keygen, it may work with a rooted device
+with more hardware permissions than default user. 
