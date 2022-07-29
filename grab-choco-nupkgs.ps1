@@ -1,23 +1,14 @@
-
-Set-Location c:\choco
-Clear-Host
 <#
-$packagename = Read-Host -Prompt 'Packages to grab'
-$packagename = $packagename.Split(' ')
-foreach ($package in $packagename) {
-
-    $fullurl =  "https://community.chocolatey.org/api/v2/package/$package" 
-    Start-Process $fullurl
-}
-Start-Sleep 10 # give it a chance to download
-Move-Item $env:USERPROFILE\Downloads\*.nupkg -Destination '\\10.10.2.8\Deploy\nupkg\' -ErrorAction Stop
-#(Get-Process "msedge").CloseMainWindow() | Out-Null   #| Stop-Process
-Write-Host "Done $packagename"
+. Download nupkg(s) from chocolatey community repo
 #>
+$downloadpath = 'c:\choco'
+Set-Location $downloadpath
 
-$source = "https://community.chocolatey.org/api/v2/package/firefox"
-$Filename = [System.IO.Path]::GetFileName($source)
-$dest = "C:\choco\$Filename.nupkg"
+function get-nupkg {
+param ([string]$parameter1)
+$source = "https://community.chocolatey.org/api/v2/package/$parameter1"
+$filename = [System.IO.Path]::GetFileName($source)
+$dest = "$downloadpath\$filename.nupkg"
 
 $wc = New-Object System.Net.WebClient
 $wc.DownloadFile($source, $dest)
@@ -36,6 +27,13 @@ $zip.Dispose()
 
 #cast to xml
 [xml]$xml = $text
-
 $version = $xml.SelectNodes('/*/*') | Select-Object -ExpandProperty version
-Move-Item -Path c:\Choco\$Filename.nupkg -Destination c:\choco\$Filename.$version.nupkg
+# rename file to include version
+Move-Item -Path $downloadpath\$filename.nupkg -Destination $downloadpath\$filename.$version.nupkg
+}
+
+$packagename = Read-Host -Prompt 'Packages to grab'                                                                   
+$packagename = $packagename.Split(' ')                                                                                
+foreach ($package in $packagename) {
+get-nupkg $package
+} 
