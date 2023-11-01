@@ -4,6 +4,6 @@ Some of these are archaic or legacy, some still have modern and interesting uses
 
 xwizard
 
-: Process XML  (Vista era)
+:Process XML  (Vista era)
 
 
