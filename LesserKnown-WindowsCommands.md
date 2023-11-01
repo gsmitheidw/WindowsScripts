@@ -54,7 +54,6 @@ File transfer as background task
 
 <details>
 <summary>* psr </summary>
-Problem Steps Recorder
 
 ```cmd
 psr.exe [/start |/stop][/output ] [/sc (0|1)] [/maxsc ]
@@ -97,4 +96,4 @@ Notes:
 
 ```
 </details>
-
+Problem Steps Recorder
