@@ -52,8 +52,9 @@ Like grep
 ## bitsadmin
 File transfer as background task
 
+## psr
 <details>
-<summary> ## psr </summary>
+<summary> Probem Steps Recorder </summary>
 
 ```cmd
 psr.exe [/start |/stop][/output ] [/sc (0|1)] [/maxsc ]
@@ -96,4 +97,3 @@ Notes:
 
 ```
 </details>
-Problem Steps Recorder
