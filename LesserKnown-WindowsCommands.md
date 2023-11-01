@@ -52,7 +52,8 @@ Like grep
 * bitsadmin
 File transfer as background task
 
-* psr
+<details>
+<summary>* psr </summary>
 Problem Steps Recorder
 
 ```cmd
@@ -95,5 +96,5 @@ Notes:
 3.    Can't specify /arcxml /arcetl /arcmht /sc etc. if output is not a ZIP file.
 
 ```
-
+</details>
 
