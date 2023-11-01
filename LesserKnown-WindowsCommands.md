@@ -19,6 +19,9 @@ List/export device drivers
 ## qwinsta
 Like quser
 
+## fsutil
+Various File System Operations
+
 ## query
 query session 
 
@@ -97,3 +100,61 @@ Notes:
 
 ```
 </details>
+
+## wusa
+Windows Update Standalone Installer
+
+## print
+print things
+
+## pathping
+sorta like traceroute/tracert
+
+## esentutl
+Database utilities for the Extensible Storage Engine
+
+## dnscmd
+Deprecated DNS command
+
+## sigverif
+File system verification of sigs 
+
+## doskey
+Macros in cmd/conhost/dos etc
+
+## w32tm
+Windows Time/NTP config 
+
+## rwinsta
+rdp reset sesssion
+
+## mode
+Change com port settings
+
+## comp
+Compare files
+
+## eventcreate
+Put events in eventlog
+
+# rasdial
+Modem dial features
+
+# systeminfo
+System info
+
+## tcmsetup
+Telephony setup
+
+## ldifde
+Directory LDIF data import/export
+
+## makecab
+cab file maker
+
+## waitfor
+Wait for a signal from an operation and notify waiting machines
+
+
+
+
