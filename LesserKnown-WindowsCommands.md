@@ -4,56 +4,56 @@ Some of these are archaic or legacy, some still have modern and interesting uses
 Many of these are superceded by powershell cmdlets. But not all. These are only
 ones that may be lesser known and possibly not on ss64.com etc. 
 
-* xwizard
+## xwizard
 Process XML  (Vista era)
 
-* cipher
+## cipher
 Encrypt files/folders
 
-* pushd/popd
+## pushd/popd
 Put paths into a stack
 
-* pnputil
+## pnputil
 List/export device drivers
 
-* qwinsta
+## qwinsta
 Like quser
 
-* query
+## query
 query session 
 
-* tzutil
+## tzutil
 locale
 
-* wecutil
+## wecutil
 Windows Event collection
 
-* auditpol
+## auditpol
 config audit file policy
 
-* change
+## change
 Change Terminal Service settings
 
-* fciv
+## fciv
 Like and older Get-FileHash for checksums
 
-* msg
+## msg
 Like the old net send
 
-* snippingtool
+## snippingtool
 can be invoked via command
 
-* cttune
+## cttune
 Enable cleartype fonts
 
-* findstr
+## findstr
 Like grep
 
-* bitsadmin
+## bitsadmin
 File transfer as background task
 
 <details>
-<summary>* psr </summary>
+<summary> ## psr </summary>
 
 ```cmd
 psr.exe [/start |/stop][/output ] [/sc (0|1)] [/maxsc ]
