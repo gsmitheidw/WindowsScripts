@@ -16,6 +16,8 @@ wget https://raw.githubusercontent.com/PProvost/vim-ps1/master/syntax/ps1.vim
 ```
 
 Then copy it to "C:\Program Files (x86)\vim\vim80\syntax" (or equivalent) using admin privs
+Per user can be done with path: ~\vimfiles\syntax
+
 Enable it in the ~\_vimrc:
 
 ```conf
