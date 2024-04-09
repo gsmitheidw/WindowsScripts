@@ -17,3 +17,11 @@ function Test-ChocoApp($appname) {
 $app = 'nss-client 14.0'
 
 Test-ChocoApp($app)
+
+
+<# 
+# Export list of chocolatey installed software to a csv file in a nice one-liner. Export-CSV is longwinded.
+# The character encoding is important, powershell defaults to utf16 but we need utf8 to
+# ensure the name and version render to adjacent spreadsheet cells rather than all in one cell per line. 
+#>
+(choco list).Replace(" ",',') | Out-File -Encoding utf8 .\software.csv
