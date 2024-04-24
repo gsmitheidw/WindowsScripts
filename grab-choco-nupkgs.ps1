@@ -17,13 +17,22 @@ param ([string]$appname)
     # Download the file asynchronously
     $downloadTask = $wc.DownloadFileTaskAsync($source, $dest)
 
+    Write-Progress -Activity "Downloading $appname" -Status "Downloading..." -PercentComplete 0
+
     # Wait for the download to complete
     $downloadTask.Wait()
 
-    # You may also want to check for any errors during download
+    # Update the progress bar to 100% once the download is complete
+    Write-Progress -Activity "Downloading $appname" -Status "Completed" -PercentComplete 100 -Completed
+
+    # handle failed downloads
     if ($downloadTask.IsFaulted) {
-        Write-Host "Error occurred while downloading $appname"
+        Write-Error "Error occurred while downloading $appname"
         $downloadTask.Exception
+        # clear any zero byte files created
+        if (Test-Path $dest) {
+            Remove-Item $dest
+        }
         return
     }
 
