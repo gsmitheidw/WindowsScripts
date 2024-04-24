@@ -12,11 +12,21 @@ param ([string]$appname)
     $filename = [System.IO.Path]::GetFileName($source)
     $dest = "$downloadpath\$filename.nupkg"
 
-    $wc = New-Object System.Net.WebClient
-    $wc.DownloadFile($source, $dest)
+    $wc = New-Object System.Net.WebClient    
 
-    # Give it a few seconds to download
-    Start-Sleep 5
+    # Download the file asynchronously
+    $downloadTask = $wc.DownloadFileTaskAsync($source, $dest)
+
+    # Wait for the download to complete
+    $downloadTask.Wait()
+
+    # You may also want to check for any errors during download
+    if ($downloadTask.IsFaulted) {
+        Write-Host "Error occurred while downloading $appname"
+        $downloadTask.Exception
+        return
+    }
+
 
     Add-Type -assembly "system.io.compression.filesystem"
     $zip = [io.compression.zipfile]::OpenRead("$dest")
