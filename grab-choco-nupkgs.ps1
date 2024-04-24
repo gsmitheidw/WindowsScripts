@@ -1,6 +1,8 @@
 <#
 . Download nupkg(s) from chocolatey community repo
 #>
+
+Push-Location .\
 $downloadpath = 'c:\choco'
 Set-Location $downloadpath
 
@@ -35,8 +37,11 @@ param ([string]$appname)
     Move-Item -Path $downloadpath\$filename.nupkg -Destination $downloadpath\$filename.$version.nupkg
 }
 
-$packagename = Read-Host -Prompt 'Packages to grab'                                                                   
+$packagename = Read-Host -Prompt 'List all packages to grab'                                                                   
 $packagename = $packagename.Split(' ')                                                                                
 foreach ($package in $packagename) {
 get-nupkg $package
 } 
+
+Pop-Location
+
